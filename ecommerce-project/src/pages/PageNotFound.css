@@ -1,0 +1,72 @@
+.page-not-found{
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.page-not-found .error-code {
+    font-size: 100px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: rgb(200, 200, 200);
+}
+
+.page-not-found .error-message {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.page-not-found .home-link {
+    color: white;
+    background-color: rgb(25, 135, 84);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(220, 220, 220, 0.5);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.page-not-found .home-link:hover {
+    background-color: rgba(25, 135, 84, 0.75);
+    border: 1px solid transparent;
+}
+
+.page-not-found .home-link:active {
+    background: rgba(25, 135, 84, 0.5);
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.page-not-found .error-image {
+    max-width: 300px;
+    max-height: 300px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 450px) {
+    .page-not-found .error-code {
+        font-size: 70px;
+    }
+
+    .page-not-found .error-message {
+        font-size: 20px;
+    }
+
+    .page-not-found .error-image {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .page-not-found .home-link {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .page-not-found {
+        padding: 30px 10px;
+    }
+
+}
