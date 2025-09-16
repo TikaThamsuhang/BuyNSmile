@@ -111,7 +111,8 @@
   padding-left: 13px;
   padding-right: 13px;
 }
-.orders-link.active {
+
+.header .orders-link.active {
   text-decoration: underline;
 }
 
