@@ -27,7 +27,7 @@ function App() {
         <Route path="checkout" element={<CheckoutPage cart={cart}/>}/>
         <Route path="orders" element={<OrdersPage cart={cart}/>}/>
         <Route path="tracking/:orderId/:productId" element={<TrackingPage cart={cart}/>}/> //:orderId and :productId are the params (parameters).
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound cart={cart}/>} />
       </Routes>
     </>
   )
