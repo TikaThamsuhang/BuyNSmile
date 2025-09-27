@@ -34,6 +34,10 @@ export function TrackingPage({cart}) {
     deliveryPercentage = 100;
   }
 
+  const isPreparing = deliveryPercentage < 33;
+  const isShipped = deliveryPercentage >= 33 && deliveryPercentage < 100;
+  const isDelivered = deliveryPercentage === 100;
+
   
   return (
     <>
@@ -63,9 +67,9 @@ export function TrackingPage({cart}) {
           />
 
           <div className="progress-labels-container">
-            <div className="progress-label">Preparing</div>
-            <div className="progress-label current-status">Shipped</div>
-            <div className="progress-label">Delivered</div>
+            <div className={`progress-label ${isPreparing && 'current-status'}`}>Preparing</div>
+            <div className={`progress-label ${isShipped && 'current-status'}`}>Shipped</div>
+            <div className={`progress-label ${isDelivered && 'current-status'}`}>Delivered</div>
           </div>
 
           <div className="progress-bar-container">
