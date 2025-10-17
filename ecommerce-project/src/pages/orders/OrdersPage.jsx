@@ -4,6 +4,8 @@ import { useState, useEffect} from "react";
 import axios from "axios";
 import { OrdersGrid } from "./OrdersGrid";
 
+window.axios = axios; // For debugging purposes
+
 export function OrdersPage({ cart, loadCart }) {
   const [orders, setOrders] = useState([]);
 
