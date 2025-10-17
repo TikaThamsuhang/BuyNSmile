@@ -9,17 +9,23 @@ export function CheckoutPage({ cart, loadCart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 
+  // This useEffect will only run once.
   useEffect(() => {
     const fetchCheckoutData = async () => {
       // Used 'let' instead of 'const' because two request and we wanna reuse the variable name
       let response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime");
       setDeliveryOptions(response.data);
+    };
+    fetchCheckoutData();
+  }, []);
 
-      response = await axios.get("/api/payment-summary");
+  // This useEffect will run every time the cart changes.
+  useEffect(() => {
+    const fetchPaymentSummary = async () => {
+      const response = await axios.get("/api/payment-summary");
       setPaymentSummary(response.data);
     };
-
-    fetchCheckoutData();
+    fetchPaymentSummary();
   }, [cart]);
 
   return (
