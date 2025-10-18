@@ -12,6 +12,11 @@ export function Header({cart}) {
   }
   );
 
+  const searchProducts = () => {
+    // Implement search functionality here
+    console.log("Search button clicked");
+  }
+
   return (
     <>
       <div className="header">
@@ -25,7 +30,7 @@ export function Header({cart}) {
         <div className="middle-section">
           <input className="search-bar" type="text" placeholder="Search" />
 
-          <button className="search-button">
+          <button className="search-button" onClick={searchProducts}>
             <img className="search-icon" src={SearchIcon} />
           </button>
         </div>
