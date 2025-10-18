@@ -1,11 +1,24 @@
-import {NavLink} from 'react-router'
+import {NavLink, useNavigate, useSearchParams} from 'react-router'
 import './Header.css'
 import CartIcon from '../assets/images/icons/cart-icon.png'
 import SearchIcon from '../assets/images/icons/search-icon.png'
 import LogoWhite from '../assets/images/logo-white.png';
 import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
+import { useState } from 'react';
+
 
 export function Header({cart}) {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  // I need to use a different variable name since "search"
+  // is already being used below.
+  const searchText = searchParams.get('search');
+
+  // || '' is a shortcut. It means if searchText does not exist
+  // it will use a default value of ''.
+  const [search, setSearch] = useState(searchText || '');
+
   let totalQuantity = 0;
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
@@ -13,8 +26,11 @@ export function Header({cart}) {
   );
 
   const searchProducts = () => {
-    // Implement search functionality here
-    console.log("Search button clicked");
+    navigate(`/?search=${search}`); // Navigate to home page with search query
+  }
+
+  const updateSearchInput = (event) => {
+    setSearch(event.target.value);
   }
 
   return (
@@ -28,7 +44,7 @@ export function Header({cart}) {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input className="search-bar" type="text" placeholder="Search" value={search} onChange={updateSearchInput}/>
 
           <button className="search-button" onClick={searchProducts}>
             <img className="search-icon" src={SearchIcon} />
