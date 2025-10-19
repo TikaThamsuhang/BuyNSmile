@@ -1,6 +1,7 @@
 import {it, expect, describe} from 'vitest';
 import {formatMoney} from './money.js';
 
+// This is a basic test suite for the formatMoney function
 describe('formatMoney', () => {
     it('formats 1999 cents as $19.99', () => {
     expect(formatMoney(1999)).toBe('$19.99');
