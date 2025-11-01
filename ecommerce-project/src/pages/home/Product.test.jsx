@@ -10,6 +10,12 @@ describe("Product Component", () => {
   let product;
   let loadCart;
 
+  // Test Hooks
+  // 1. beforeEach - runs before each test case in the describe block.
+  // 2. afterEach - runs after each test case in the describe block.
+  // 3. beforeAll - runs once before all test cases in the describe block.
+  // 4. afterAll - runs once after all test cases in the describe block.
+
   beforeEach(() => { // This function runs before each test case in this describe block.
     // In simple meaning, it resets the product and loadCart variables before each test to ensure a clean state.
     // Clean state means no leftover data from previous tests that could affect the current test.
