@@ -4,6 +4,8 @@ import './TrackingPage.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import { API_BASE_URL } from '../../config/api';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
 
 export function TrackingPage({cart}) {
   const {orderId, productId} = useParams();  
@@ -11,7 +13,7 @@ export function TrackingPage({cart}) {
 
   useEffect(() => {
     const fetchTrackingData = async () => {
-      const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+      const response = await axios.get(`${API_BASE_URL}/api/orders/${orderId}?expand=products`);
       setOrder(response.data);
     }
 
@@ -19,7 +21,12 @@ export function TrackingPage({cart}) {
   }, [orderId]);
 
   if (!order) {
-    return null; // or a loading indicator
+    return (
+      <>
+        <Header cart={cart} />
+        <LoadingSpinner />
+      </>
+    );
   }
 
   const orderProduct = order.products.find((orderProduct) => {

@@ -3,13 +3,14 @@ import { Link } from "react-router";
 import BuyAgainIcon from "../../assets/images/icons/buy-again.png";
 import { Fragment } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 export function OrdersDetailsGrid({ order, loadCart }) {
   return (
     <div className="order-details-grid">
       {order.products.map((orderProduct) => {
         const addToCart = async () => {
-          await axios.post("/api/cart-items", {
+          await axios.post(`${API_BASE_URL}/api/cart-items`, {
             // Note: you can also get the productId from
             // orderProduct.productId
             productId: orderProduct.product.id,

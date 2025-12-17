@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { formatMoney } from "../../utils/money";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 export function DeliveryOption({deliveryOptions, cartItem, loadCart}) {
   return (
@@ -13,7 +14,7 @@ export function DeliveryOption({deliveryOptions, cartItem, loadCart}) {
         }
 
         const updateDeliveryOption = async() => {
-          await axios.put(`/api/cart-items/${cartItem.productId}`, {
+          await axios.put(`${API_BASE_URL}/api/cart-items/${cartItem.productId}`, {
             deliveryOptionId: deliveryOption.id,
           });
           await loadCart();

@@ -4,6 +4,7 @@ import { CheckoutHeader } from "../../components/CheckoutHeader";
 import "./CheckoutPage.css";
 import { OrderSummary } from "./OrderSummary";
 import { PaymentSummary } from "./PaymentSummary";
+import { API_BASE_URL } from "../../config/api";
 
 export function CheckoutPage({ cart, loadCart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
@@ -13,7 +14,7 @@ export function CheckoutPage({ cart, loadCart }) {
   useEffect(() => {
     const fetchCheckoutData = async () => {
       // Used 'let' instead of 'const' because two request and we wanna reuse the variable name
-      let response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime");
+      let response = await axios.get(`${API_BASE_URL}/api/delivery-options?expand=estimatedDeliveryTime`);
       setDeliveryOptions(response.data);
     };
     fetchCheckoutData();
@@ -22,7 +23,7 @@ export function CheckoutPage({ cart, loadCart }) {
   // This useEffect will run every time the cart changes.
   useEffect(() => {
     const fetchPaymentSummary = async () => {
-      const response = await axios.get("/api/payment-summary");
+      const response = await axios.get(`${API_BASE_URL}/api/payment-summary`);
       setPaymentSummary(response.data);
     };
     fetchPaymentSummary();

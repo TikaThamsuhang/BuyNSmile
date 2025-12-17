@@ -3,17 +3,22 @@ import "./OrdersPage.css";
 import { useState, useEffect} from "react";
 import axios from "axios";
 import { OrdersGrid } from "./OrdersGrid";
+import { API_BASE_URL } from "../../config/api";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 window.axios = axios; // For debugging purposes
 
 export function OrdersPage({ cart, loadCart }) {
   const [orders, setOrders] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrdersData = async () => {
+      setIsLoading(true);
       // Fetch orders from the API
-      const response = await axios.get("/api/orders?expand=products");
+      const response = await axios.get(`${API_BASE_URL}/api/orders?expand=products`);
       setOrders(response.data);
+      setIsLoading(false);
     }
     fetchOrdersData();
   }, []);
@@ -26,7 +31,11 @@ export function OrdersPage({ cart, loadCart }) {
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
-        <OrdersGrid orders={orders} loadCart={loadCart}/>        
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <OrdersGrid orders={orders} loadCart={loadCart}/>
+        )}        
       </div>
     </>
   );

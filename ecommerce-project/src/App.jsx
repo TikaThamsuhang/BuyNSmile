@@ -7,12 +7,13 @@ import './App.css'
 import { PageNotFound } from './pages/PageNotFound'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { API_BASE_URL } from './config/api'
 
 function App() {
   const [cart, setCart] = useState([]); // New state for cart items
 
   const loadCart = async () => {
-      const response = await axios.get('/api/cart-items?expand=product') // Query parameter to expand product details
+      const response = await axios.get(`${API_BASE_URL}/api/cart-items?expand=product`) // Query parameter to expand product details
       setCart(response.data);
     };
 

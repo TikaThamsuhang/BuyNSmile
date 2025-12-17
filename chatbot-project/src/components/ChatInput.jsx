@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Chatbot} from 'supersimpledev'
+import { getChatResponse } from '../services/gemini';
 import Loading from '../assets/loading-spinner.gif'
 import './ChatInput.css'
 import dayjs from 'dayjs'
@@ -49,7 +49,7 @@ export function ChatInput({ chatMessages, setChatMessages }){
       
     
 
-    const response = await Chatbot.getResponseAsync(inputText);
+    const response = await getChatResponse(inputText);
     setChatMessages([
       ...newChatMessages, // spread operator (...) is used to copy all existing chat messages into the new array.
       { message: response, 
