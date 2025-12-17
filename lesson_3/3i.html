@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3f
+    </title>
+  </head>
+  <body>
+    <!-- This is the container div where our React app will be rendered -->
+    <div class="js-container"></div>
+    
+
+    <!-- Importing React library (core of React) -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script> 
+
+    <!-- Importing ReactDOM library (used to render React elements into the DOM) -->
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Importing Babel (transpiler that converts JSX into JavaScript) -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <!-- We write JSX code here. 
+         type="text/babel" means Babel will convert it into plain JS so browsers understand -->
+    <script type="text/babel"> 
+      function App() {
+        const [inputText, setInputText] = React.useState('');
+
+        function saveInputText(event) {
+          setInputText(event.target.value);
+        }
+
+        function resetInputText() {
+          setInputText('');
+        }
+
+        function Example() {
+          setInputText('Alice');
+        }
+
+        function onKeyDown(event) {
+          if (event.key === 'Enter') {
+            setInputText( inputText + '! You pressed Enter!');
+          }
+        }
+        return (
+          <>
+            <input
+              onChange={saveInputText}
+              placeholder="Type a name here"
+              value={inputText}
+              onKeyDown={onKeyDown}
+            />
+            <button onClick={resetInputText}>Reset</button>
+            <button onClick={Example}>Example</button>
+            <p>Hello {inputText}</p>
+          </>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+
+    </script>
+  </body>
+</html>

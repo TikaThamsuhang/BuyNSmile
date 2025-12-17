@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <!-- This is the container div where our React app will be rendered -->
+    <div class="js-container"></div>
+
+    <!-- Importing React library (core of React) -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script> 
+
+    <!-- Importing ReactDOM library (used to render React elements into the DOM) -->
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Importing Babel (transpiler that converts JSX into JavaScript) -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+
+    <!-- We write JSX code here. 
+         type="text/babel" means Babel will convert it into plain JS so browsers understand -->
+    <script type="text/babel"> 
+
+      function LoginForm(){
+        return(
+          <>
+            <div>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" />
+            </div>
+            <button>Login</button>
+            <button>Sign Up</button>
+          </>
+        );
+      }
+
+      function App(){
+        return(
+          <>
+            <p>Hello, welcome to my web.</p>
+            <LoginForm />
+          </>
+          
+        );
+      }
+
+      // Select the container div from HTML using querySelector
+      const container = document.querySelector('.js-container');
+
+      // Render the React element (div) into the container using ReactDOM
+      ReactDOM.createRoot(container).render(<App/>);
+
+    </script>
+  </body>
+</html>
